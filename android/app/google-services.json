@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "864102262561",
+    "project_id": "ajefinance-6c3e2",
+    "storage_bucket": "ajefinance-6c3e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864102262561:android:5a009ac3feb256c9400060",
+        "android_client_info": {
+          "package_name": "com.ajefinance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864102262561-db573mmuls2aua68o4m3k50d7ldfal7p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRviZE-5FoiiCZS0Z4MlmHRoYnXzKlh9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864102262561-db573mmuls2aua68o4m3k50d7ldfal7p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

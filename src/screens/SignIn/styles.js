@@ -12,11 +12,19 @@ export const NomeTela = styled.Text`
     color: #000;
 `;
 
-export const AreaLogin = styled.View``;
-export const AreaLoginInput = styled.View`
+export const AreaLogin = styled.View`
     width: 100%;
+`;
+
+export const AreaLoginInput = styled.View`
     padding: 40px;
 `;
+
+export const AreaLoginButton = styled.View`
+    margin-top: 5px;
+    padding: 40px;
+`;
+
 export const CustomButton = styled.TouchableOpacity`
     height: 60px;
     background-color: #000;
@@ -39,8 +47,7 @@ export const SignMessageButtonText = styled.Text`
     color: #000;
 `;
 export const SignMessageButtonTextBold = styled.Text`
-    font-size: 16px;
+    font-size: 14px;
     color: #000;
     font-weight: bold;
-    mergin-left: 10px;
 `;

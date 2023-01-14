@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import SignInput from "../../components/SignInput";
 import { useNavigation } from "@react-navigation/native";
+import service from "../../ApiService";
 
 import { Container, NomeTela, AreaCadastro, AreaCadastroInput, 
     CustomButton, CustomButtonText, SignMessageButton, 
@@ -23,7 +24,7 @@ export default () => {
     }
 
     const handleSignUpButtonClick = () => {
-
+        const auth = service.createUserWithEmailAndPassword(inpEmail, inpPassword);
     }
 
     return (

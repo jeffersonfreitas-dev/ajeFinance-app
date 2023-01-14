@@ -1,22 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, NomeTela } from "./styles";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import auth from '@react-native-firebase/auth';
 import { useNavigation } from "@react-navigation/native";
 
 export default () => {
     const navigation = useNavigation();
+    const [user, setUser] = useState();
+
+    function onAuthStateChanged(user) {
+        setUser(user);
+      }
 
     useEffect(() => {
-        const checkToken = async () => {
-            const token = await AsyncStorage.getItem("token");
-            if (token) {
-                //validar token
-            }else {
-                navigation.navigate("SignIn");
-            }
+        auth().onAuthStateChanged(onAuthStateChanged);
+
+        if (!user) {
+           navigation.reset({
+            routes: [{name: 'SignIn'}]
+           })
+        }else {
+            navigation.reset({
+                routes: [{name: 'MainTab'}]
+            })
         }
-        checkToken();
     },[]);
+
 
 
     return (

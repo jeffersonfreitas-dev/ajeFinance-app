@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import SignInput from "../../components/SignInput";
 import { useNavigation } from "@react-navigation/native";
-import service from "../../ApiService";
+import auth from "@react-native-firebase/auth";
+import firestore from "@react-native-firebase/firestore";
 
 import { Container, NomeTela, AreaCadastro, AreaCadastroInput, 
     CustomButton, CustomButtonText, SignMessageButton, 
@@ -13,6 +14,8 @@ import PersonIcon from "../../assets/person.svg";
 
 export default () => {
 
+    const USER_COLLECTION = 'users';
+
     const navigation = useNavigation();
 
     const [inpName, setInpName] = useState("");
@@ -23,8 +26,30 @@ export default () => {
         navigation.navigate('SignIn');
     }
 
-    const handleSignUpButtonClick = () => {
-        const auth = service.createUserWithEmailAndPassword(inpEmail, inpPassword);
+    const saveUserFirestore = async () => {
+        //Adicionando o usuário criado no firestore
+        await firestore().collection(USER_COLLECTION).doc(inpEmail)
+                .set({
+                    name: inpName,
+                    email: inpEmail
+                }).then(() => {
+                    //Redirecionando o usuário recem-criado para a Home
+                    navigation.reset({
+                        routes: [{name: 'MainTab'}]
+                    })
+                })
+    }
+
+    const handleSignUpButtonClick = async () => {
+        await auth().createUserWithEmailAndPassword(inpEmail, inpPassword)
+            .then((user) => {
+                saveUserFirestore(user);
+            })
+            .catch(error => {
+                if (error.code === 'auth/email-already-in-use') {
+                    alert('E-mail já cadastrado!');
+                }
+            })
     }
 
     return (

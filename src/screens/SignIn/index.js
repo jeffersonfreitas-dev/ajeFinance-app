@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import SignInput from "../../components/SignInput";
 import { useNavigation } from "@react-navigation/native";
-import service from "../../ApiService";
 import { Container, NomeTela, AreaLogin, AreaLoginInput, 
     CustomButton, CustomButtonText, SignMessageButton, 
     SignMessageButtonText, SignMessageButtonTextBold } from "./styles";
@@ -9,7 +8,6 @@ import { Container, NomeTela, AreaLogin, AreaLoginInput,
 import EmailIcon from "../../assets/email.svg";
 import LockIcon from "../../assets/lock.svg";
 import auth from "@react-native-firebase/auth";
-import FBAuthExceptions from "../../integrations/firebase/FBAuthExceptions";
 
 export default () => {
     const navigation = useNavigation();
@@ -24,33 +22,32 @@ export default () => {
         
     }
 
-    const handleSignInButtonClick = () => {
+    const handleSignInButtonClick = async () => {
         
-        const user = auth()
+        const user = await auth()
             .signInWithEmailAndPassword(inpEmail, inpPassword)
             .then((loggedIdUser) => {
-                return loggedIdUser;
+
+                if(loggedIdUser) {
+                    navigation.reset({
+                        routes: [{name:'MainTab'}]
+                    });
+                }
             })
             .catch(error => {
                 if (error.code === 'auth/invalid-email') {
-                    console.log('Endereço de e-mail inválido!');
+                    alert('Endereço de e-mail inválido!');
                   }
             
                   if (error.code === 'auth/user-not-found') {
-                    console.log('Usuário não encontrado!');
+                    alert('Usuário não encontrado!');
                   }
-            });
 
-        
-        //TODO: Mesmo quando o usuário erra o email esta direcionando para o home
-        if(user) {
-            //userDispatch
-            navigation.reset({
-                routes: [{name:'MainTab'}]
+                  if (error.code === 'auth/wrong-password') {
+                    alert('Usuário e/ou senha inválidos!');
+                  }
+                  console.log(error);
             });
-        } else {
-            alert("Não foi")
-        }
 
     }
 

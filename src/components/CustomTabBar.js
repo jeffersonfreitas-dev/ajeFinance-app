@@ -4,6 +4,8 @@ import styled from "styled-components/native";
 import HomeIcon from '../assets/home.svg';
 import FavoriteIcon from '../assets/favorite_full.svg';
 import StarIcon from '../assets/star.svg';
+import LockIcon from '../assets/lock.svg';
+import MyLocationIcon from '../assets/my_location.svg';
 
 const TabArea = styled.View`
     height: 60px;
@@ -45,7 +47,16 @@ export default ({state, navigation}) => {
                 />
             </TabItem>
 
-            <TabItemCenter onPress={()=>goTo("Billpay")}>
+            <TabItem onPress={()=>goTo("Billpay")}>
+                <LockIcon 
+                    width="24" 
+                    height="24" 
+                    fill="#fff"
+                    style={{opacity: state.index===1? 1: 0.5}}
+                />
+            </TabItem>
+
+            <TabItemCenter onPress={()=>goTo("Home")}>
                 <HomeIcon
                     width="32" 
                     height="32" 
@@ -53,12 +64,21 @@ export default ({state, navigation}) => {
                 />
             </TabItemCenter>
 
+            <TabItem onPress={()=>goTo("Transfer")}>
+                <MyLocationIcon 
+                    width="24" 
+                    height="24" 
+                    fill="#fff"
+                    style={{opacity: state.index===3? 1: 0.5}}
+                />
+            </TabItem>
+
              <TabItem onPress={()=>goTo("MainDrawer")}>
                 <StarIcon
                     width="24" 
                     height="24" 
                     fill="#fff"
-                    style={{opacity: state.index===3? 1: 0.5}}                
+                    style={{opacity: state.index===4? 1: 0.5}}                
                 />
             </TabItem>
         </TabArea>

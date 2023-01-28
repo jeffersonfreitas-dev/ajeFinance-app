@@ -4,7 +4,7 @@ import PreloadScreen from "../screens/Preload";
 import SignUpScreen from "../screens/SignUp/";
 import SignInScreen from "../screens/SignIn/";
 import MainTab from './MainTab';
-import MainDrawer from './MainDrawer';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +24,5 @@ export default () => (
         <Stack.Screen name="SignIn" component={SignInScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen name="MainTab" component={MainTab}/>
-        <Stack.Screen name="MainDrawer" component={MainDrawer}/>
     </Stack.Navigator>
 );

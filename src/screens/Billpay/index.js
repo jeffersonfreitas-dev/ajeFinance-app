@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { Container, NomeTela, HeaderArea, ContentArea, FooterArea} from "./styles";
-import FloatingButton from "../../components/FloatingButton";
+import { Container, NomeTela, HeaderArea, ContentArea} from "./styles";
 
 export default () => {
 
@@ -15,9 +14,6 @@ export default () => {
             <ContentArea>
                 <NomeTela>Conta Pagar</NomeTela>
             </ContentArea>
-            <FooterArea>
-                <FloatingButton />
-            </FooterArea>
         </Container>
     );
 }

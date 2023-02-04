@@ -3,7 +3,6 @@ import { Container, NomeTela, CustomButton, CustomButtonText } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import auth from "@react-native-firebase/auth";
 import FBAuthExceptions from "../../integrations/firebase/FBAuthExceptions";
-import FloatingButton from "../../components/FloatingButton";
 
 export default () => {
 
@@ -28,7 +27,6 @@ export default () => {
             <CustomButton onPress={handleSignOutButtonClick}>
                 <CustomButtonText>LOGOUT</CustomButtonText>
             </CustomButton>
-            <FloatingButton />
         </Container>
     );
 }

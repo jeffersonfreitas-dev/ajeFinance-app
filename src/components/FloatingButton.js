@@ -11,6 +11,8 @@ const FloatButtonContainer = styled.TouchableOpacity`
     height: 60px;
     border-radius: 35px;
     position: absolute;
+    bottom: 10px;
+    right: -160px;
 `;
 const FloatButtonBox = styled.View`
     

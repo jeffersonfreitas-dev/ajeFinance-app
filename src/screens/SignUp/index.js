@@ -26,9 +26,9 @@ export default () => {
         navigation.navigate('SignIn');
     }
 
-    const saveUserFirestore = async () => {
+    const saveUserFirestore = async (user) => {
         //Adicionando o usuário criado no firestore
-        await firestore().collection(USER_COLLECTION).doc(inpEmail)
+        await firestore().collection(USER_COLLECTION).doc(user.uid)
                 .set({
                     name: inpName,
                     email: inpEmail
@@ -40,10 +40,30 @@ export default () => {
                 })
     }
 
+    const createDefaultAccountPlanToUser = async (user, type) => {
+
+        await firestore().collection(USER_COLLECTION).doc(user)
+        .add(["Salário", "Serviços", "Rendimentos"])
+        .then(() => {
+            console.log("OK")
+        })
+    }
+
     const handleSignUpButtonClick = async () => {
         await auth().createUserWithEmailAndPassword(inpEmail, inpPassword)
-            .then((user) => {
-                saveUserFirestore(user);
+            .then((result) => {
+                firestore().collection(USER_COLLECTION).doc(result.user.uid)
+                .set({
+                    name: inpName,
+                    email: inpEmail,
+                    account_plan_credit: ["Salário", "Serviços", "Rendimentos"],
+                    account_plan_debit: ["Aluguel", "Internet", "Impostos"]
+                }).then(() => {
+                    //Redirecionando o usuário recem-criado para a Home
+                    navigation.reset({
+                        routes: [{name: 'MainTab'}]
+                    })
+                })
             })
             .catch(error => {
                 if (error.code === 'auth/email-already-in-use') {

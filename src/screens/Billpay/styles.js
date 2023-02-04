@@ -14,14 +14,6 @@ export const ContentArea = styled.View`
     align-items: center;
 `;
 
-export const FooterArea = styled.View`
-    background-color: yellow;
-    flex: 1;
-    flex-direction: row;
-    justify-content: center;
-
-`;
-
 export const NomeTela = styled.Text`
     font-size: 20px;
     color: #000;

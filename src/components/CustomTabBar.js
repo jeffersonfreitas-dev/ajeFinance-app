@@ -47,7 +47,7 @@ export default ({state, navigation}) => {
                 />
             </TabItem>
 
-            <TabItem onPress={()=>goTo("Billpay")}>
+            <TabItem onPress={()=>goTo("BillpayDrawer")}>
                 <LockIcon 
                     width="24" 
                     height="24" 

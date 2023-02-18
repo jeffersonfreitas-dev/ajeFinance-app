@@ -38,12 +38,12 @@ export default ({state, navigation}) => {
 
     return (
         <TabArea>
-            <TabItem onPress={()=>goTo("Receive")}>
+            <TabItem onPress={()=>goTo("ReceiveDrawer")}>
                 <FavoriteIcon 
                     width="24" 
                     height="24" 
                     fill="#fff"
-                    style={{opacity: state.index===2? 1: 0.5}}
+                    style={{opacity: state.index===1? 1: 0.5}}
                 />
             </TabItem>
 
@@ -52,11 +52,11 @@ export default ({state, navigation}) => {
                     width="24" 
                     height="24" 
                     fill="#fff"
-                    style={{opacity: state.index===1? 1: 0.5}}
+                    style={{opacity: state.index===2? 1: 0.5}}
                 />
             </TabItem>
 
-            <TabItemCenter onPress={()=>goTo("Home")}>
+            <TabItemCenter onPress={()=>goTo("HomeDrawer")}>
                 <HomeIcon
                     width="32" 
                     height="32" 
@@ -64,7 +64,7 @@ export default ({state, navigation}) => {
                 />
             </TabItemCenter>
 
-            <TabItem onPress={()=>goTo("Transfer")}>
+            <TabItem onPress={()=>goTo("AccountDrawer")}>
                 <MyLocationIcon 
                     width="24" 
                     height="24" 

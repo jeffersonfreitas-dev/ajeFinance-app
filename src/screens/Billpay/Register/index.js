@@ -1,36 +1,24 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { Container, NomeTela, AreaCadastro, AreaCadastroInput, CustomButton, CustomButtonText} from "./styles";
-import SignInput from "../../../components/SignInput";
+import { Container, NomeTela, CustomButton, CustomButtonText} from "./styles";
+import MainDrawer from "../../../stacks/MainDrawer"
 
 export default () => {
 
     const navigation = useNavigation();
 
+    handleSignOutButtonClick = () => {
+        navigation.reset({
+            routes: [{name: MainDrawer}]
+        })
+    }
+
     return (
         <Container>
-            <NomeTela>SignUp</NomeTela>
-            <AreaCadastro>
-                <AreaCadastroInput>
-                    <SignInput 
-                        placeholder="Digite seu nome"
-                    />
-
-                    <SignInput 
-                        placeholder="Digite seu e-mail"
-                        />
-
-                    <SignInput 
-                        placeholder="Digite sua senha"
-                        />
-                </AreaCadastroInput>
-
-                <AreaCadastroInput>
-                    <CustomButton>
-                        <CustomButtonText>SALVAR</CustomButtonText>
-                    </CustomButton>
-                </AreaCadastroInput>
-            </AreaCadastro>
+            <NomeTela>BillpayRegister</NomeTela>
+            <CustomButton onPress={handleSignOutButtonClick}>
+                <CustomButtonText>LOGOUT</CustomButtonText>
+            </CustomButton>
         </Container>
     );
 }

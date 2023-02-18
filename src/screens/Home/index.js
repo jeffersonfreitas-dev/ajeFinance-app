@@ -26,7 +26,7 @@ export default () => {
  
             <CustomButton onPress={handleSignOutButtonClick}>
                 <CustomButtonText>LOGOUT</CustomButtonText>
-            </CustomButton>
+            </CustomButton> 
         </Container>
     );
 }
